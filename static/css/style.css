@@ -1,0 +1,53 @@
+#message_wrapper{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    clear: none;
+    /*margin-bottom: 7px;*/
+}
+#message-container{
+    display: inline;
+    padding: 10px 0;
+    overflow: hidden;
+    clear: none;
+    /*margin-bottom: 5px;*/
+}
+
+#chat-log{
+    overflow: hidden;
+    clear: none;
+    height: 70%;
+    width: 50%;
+    background-color: orange;
+}
+
+.message-content-p{
+    display: inline;
+    background-color: darkolivegreen;
+    padding: 8px 15px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.replies img{
+    margin-right: 7px;
+}
+
+.sent img{
+    margin-left: 7px;
+}
+
+.replies, .replies img{
+    float: left;
+}
+
+.sent, .sent img{
+    float: right;
+}
+
+#message-container p{
+    /*margin: 0 0 0 0;*/
+    /*padding: 0 0 0 0;*/
+}

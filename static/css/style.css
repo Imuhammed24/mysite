@@ -14,11 +14,18 @@
 }
 
 #chat-log{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     clear: none;
-    height: 70%;
+    height: 20%;
     width: 50%;
+    max-height: 50%;
     background-color: orange;
+    padding: 3px;
+}
+
+#chat-message-input{
+    width: 50%;
 }
 
 .message-content-p{

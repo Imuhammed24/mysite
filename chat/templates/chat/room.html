@@ -11,10 +11,10 @@
 
 <body>
     <p>{{ request.user.username.title }} account</p>
-    <div id="chat-log"></div><br>
-    <input id="chat-message-input" type="text"><br>
+    <p>With {{ user.username.title }}</p>
+    <div id="chat-log"></div>
+    <input id="chat-message-input" type="text">
     <input id="chat-message-submit" type="button" value="Send">
-
     {{ room_name|json_script:"room-name" }}
     {% include 'chat-room-script.html'%}
 </body>

@@ -49,14 +49,19 @@
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'command': 'new_message',
-                'from': '{{ request.user.username }}'
+                'from': '{{ request.user.username }}',
+                'to': '{{ user.username }}'
             }));
             messageInputDom.value = '';
         }
     };
 
     function fetchMessages() {
-        chatSocket.send(JSON.stringify({'command': 'fetch_messages'}))
+        chatSocket.send(JSON.stringify({
+            'command': 'fetch_messages',
+            'from': '{{ request.user.username }}',
+            'to': '{{ user.username }}'
+        }))
     }
 
     function createMessage(message) {
@@ -85,6 +90,7 @@
         message_div_tag.appendChild(message_p_tag);
         message_wrapper.appendChild(message_div_tag);
         document.querySelector('#chat-log').appendChild(message_wrapper);
+        document.getElementById('chat-log').scrollTo(0, 1200)
         // document.querySelector('#chat-log').value += (message['content'] + '\n');
     }
 

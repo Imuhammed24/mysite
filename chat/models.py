@@ -9,9 +9,13 @@ class Message (models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_messages')
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='message_recipient')
 
     def __str__(self):
         return self.author.username
 
     def last_10_messages():
         return reversed(Message.objects.order_by('-timestamp').all()[:10])
+
+    class Meta:
+        ordering = ['-timestamp']

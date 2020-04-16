@@ -13,7 +13,13 @@ User = get_user_model()
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        messages = Message.last_10_messages()
+        author_name = data['from']
+        recipient_name = data['to']
+
+        author = get_object_or_404(User, username=author_name)
+        recipient = get_object_or_404(User, username=recipient_name)
+
+        messages = reversed(Message.objects.filter(author__in=[author, recipient], recipient__in=[author, recipient]))
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
@@ -22,9 +28,11 @@ class ChatConsumer(WebsocketConsumer):
 
     def new_message(self, data):
         author_name = data['from']
+        recipient_name = data['to']
         author = get_object_or_404(User, username=author_name)
+        recipient = get_object_or_404(User, username=recipient_name)
         if data['message'] is not None:
-            message = Message.objects.create(author=author, content=data['message'], )
+            message = Message.objects.create(author=author, content=data['message'], recipient=recipient)
             content = {
                 'command': 'new_message',
                 'message': self.message_to_json(message)
@@ -41,6 +49,7 @@ class ChatConsumer(WebsocketConsumer):
     def message_to_json(self, message):
         return {
             'author': message.author.username,
+            'recipient': message.recipient.username,
             'content': message.content,
             'timestamp': str(message.timestamp)
         }

@@ -6,8 +6,9 @@
     /*margin-bottom: 7px;*/
 }
 #message-container{
-    display: inline;
+    display: inline-table;
     padding: 10px 0;
+    width: 70%;
     overflow: hidden;
     clear: none;
     /*margin-bottom: 5px;*/
@@ -17,22 +18,29 @@
     overflow-x: hidden;
     overflow-y: scroll;
     clear: none;
-    height: 20%;
+    height: 600px;
     width: 50%;
-    max-height: 50%;
+    max-height: 600px;
     background-color: orange;
     padding: 3px;
 }
 
 #chat-message-input{
-    width: 50%;
+    width: 48%;
+    display: block;
+    margin: 5px 0;
+}
+#chat-message-submit{
+    display: block;
 }
 
 .message-content-p{
-    display: inline;
+    display: inline-table;
     background-color: darkolivegreen;
     padding: 8px 15px;
+    margin: 0;
     border-radius: 15px;
+    max-width: 60%;
     color: white;
     font-weight: bold;
     font-family: sans-serif;
@@ -46,15 +54,15 @@
     margin-left: 7px;
 }
 
-.replies, .replies img{
+.replies, .replies img, .replies p{
     float: left;
 }
 
-.sent, .sent img{
+.sent, .sent img, .sent p{
     float: right;
 }
 
-#message-container p{
+#message-container{
     /*margin: 0 0 0 0;*/
     /*padding: 0 0 0 0;*/
 }
